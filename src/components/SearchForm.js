@@ -1,7 +1,20 @@
 import React from "react";
-
+import { useGlobalContext } from "../context";
 const SearchForm = () => {
-  return <div>SearchForm</div>;
+  const { query, handleSearch } = useGlobalContext();
+
+  return (
+    <form className="search-form" onSubmit={(e) => e.preventDefault()}>
+      <h2>search hacker news</h2>
+      <h4>powered by algolia</h4>
+      <input
+        type="text"
+        className="form-input"
+        value={query}
+        onChange={(e) => handleSearch(e.target.value)}
+      ></input>
+    </form>
+  );
 };
 
 export default SearchForm;
